@@ -1,22 +1,9 @@
-import { FC, useState, FormEvent, SVGProps } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
-import L, { LatLngExpression } from 'leaflet'; // Import LatLngExpression for typing
+import { useState } from 'react';
+import type { FC, FormEvent, SVGProps } from 'react';
 
-// --- Leaflet Icon Fix (TS2339 fix) ---
-// This is the correct standard polyfill for react-leaflet icon issues
-// We use 'as any' here to safely delete the protected property without strict type errors.
-delete (L.Icon.Default.prototype as any)._getIconUrl; 
-
-L.Icon.Default.mergeOptions({
-    iconRetinaUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png',
-    iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
-    shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
-});
-// ------------------------
+// Removed all imports related to 'leaflet' and 'react-leaflet' to resolve the build error.
 
 // --- Custom Icon Component Interfaces ---
-// Fixed: Applied SVGProps typing (TS7006 fix)
 type IconProps = SVGProps<SVGSVGElement>;
 
 const UserIcon: FC<IconProps> = (props) => (
@@ -41,39 +28,31 @@ const MessageCircleIcon: FC<IconProps> = (props) => (
     </svg>
 );
 
-// --- UPDATED MAP COMPONENT ---
-// FC used for typing the functional component
+// --- UPDATED MAP COMPONENT (Using iframe for self-contained map) ---
 const LocationMap: FC = () => {
-    // Coordinates for Guru Ghasidas Vishwavidyalaya, Bilaspur
-    // Fixed: Explicitly typed position as LatLngExpression (TS2322 fix)
-    const position: LatLngExpression = [22.1287782, 82.1377255]; 
-    const initialZoom = 14; 
+    // Switched to a Google Maps embed URL to eliminate react-leaflet and leaflet dependencies.
+    // Coordinates are for Guru Ghasidas Vishwavidyalaya, Bilaspur.
+    const embedUrl = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3693.3039600000004!2d82.1351505753555!3d22.387192679641757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a2862d7c585c54f%3A0x7d27e2a9b244799!2sGuru%20Ghasidas%20Vishwavidyalaya!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin";
 
     return (
         <div className="flex-[2] bg-gray-200 rounded-xl shadow-inner border border-gray-300 overflow-hidden">
-            <MapContainer 
-                // Fixed: The type is correct now (TS2322 fix)
-                center={position} 
-                zoom={initialZoom} 
-                scrollWheelZoom={false}
+             <iframe
+                src={embedUrl}
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Location of University"
                 className="w-full h-full min-h-[300px]"
-            >
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={position}>
-                    <Popup>
-                        <b className="font-semibold">Guru Ghasidas Vishwavidyalaya</b>, <br /> Bilaspur, Chhattisgarh.
-                    </Popup>
-                </Marker>
-            </MapContainer>
+            ></iframe>
         </div>
     );
 }
+
 // --- Main Contact Component ---
 const Contact: FC = () => {
-    // Fixed: Using useState and defined Status type (TS6133 fix)
     const [status, setStatus] = useState<'Idle' | 'Sending...' | 'Sent!' | 'Failed'>('Idle'); 
 
     const handleSubmit = async (e: FormEvent) => {
@@ -148,7 +127,7 @@ const Contact: FC = () => {
                 <div className=" flex flex-col md:flex-row gap-16">
                     <LocationMap />
                     
-                    {/* Fixed: Added onSubmit handler to use setStatus (TS6133 fix) */}
+                    {/* Contact Form */}
                     <form className="flex-1 space-y-6" onSubmit={handleSubmit}>
                         
                         {/* Status Message Display */}
