@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import React from 'react'; // Added explicit React import for older TS/JSX environments
+ // Added explicit React import for older TS/JSX environments
 
 // --- FIXED ICONS: Replacing all react-icons with lucide-react (which is natively available) ---
 import {
@@ -314,7 +314,7 @@ const ContactSection = () => (
       <form className="space-y-4 bg-white  p-8 rounded-xl shadow-2xl flex flex-col gap-10 w-full ">
         <input type="text" placeholder="Your Name" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
         <input type="email" placeholder="Your Email" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-        <textarea placeholder="Your Message" rows="5" className="w-full p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+        <textarea placeholder="Your Message" className="w-full p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
         <button type="submit" className="w-full py-4 h-12 bg-indigo-600 text-white font-bold text-lg rounded-xl hover:bg-indigo-700 transition duration-300 shadow-lg">
           Send Message
         </button>
