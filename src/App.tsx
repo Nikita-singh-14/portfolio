@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 // --- FIXED ICONS: Replacing all react-icons with lucide-react (which is natively available) ---
 import {
   Home, User, ListChecks, Briefcase, FolderKanban, Award, FileText, Phone, // Navigation & Section Icons
-  Menu, X, Linkedin, Github, Code, Sun, Moon // Utility & Social Icons (Sun and Moon added for toggle)
+  Menu, X, Linkedin, Github, Code // Utility & Social Icons (Sun and Moon added for toggle)
 } from 'lucide-react'
 
 // --- Global Data (Mock Content) ---
@@ -44,9 +44,16 @@ const PORTFOLIO_DATA = {
 
 // --- Sub-Components for Sections ---
 
-const Section = ({ id, title, children }) => (
-  <section id={id} className="min-h-screen pt-16 lg:pt-24 px-6 md:px-12 bg-gray-50  border-b border-gray-200 ">
-    <h2 className="text-4xl font-extrabold mb-8 text-indigo-600  border-b-4 border-indigo-200  pb-2 inline-block">
+interface SectionProps {
+  id: string;
+  title: string;
+  children: React.ReactNode; // Type for content passed inside the component
+}
+
+// 2. Apply the type to the functional component
+const Section = ({ id, title, children }: SectionProps) => (
+  <section id={id} className="min-h-screen pt-16 lg:pt-24 px-6 md:px-12 bg-gray-50 border-b border-gray-200 ">
+    <h2 className="text-4xl font-extrabold mb-8 text-indigo-600 border-b-4 border-indigo-200 pb-2 inline-block">
       {title}
     </h2>
     <div className="py-6">{children}</div>
