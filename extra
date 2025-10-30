@@ -986,3 +986,5 @@ const App = () => {
 };
 
 export default App;
+
+Home, User, ListChecks, Briefcase, FolderKanban, Award, FileText, Phone,

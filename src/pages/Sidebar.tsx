@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 // Using lucide-react for consistency with App.tsx
 import {
-  Home, User, ListChecks, Briefcase, FolderKanban, Award, FileText, Phone, // Navigation Icons
+   // Navigation Icons
   Menu, X, Linkedin, Github // Utility & Social Icons
 } from 'lucide-react';
 
