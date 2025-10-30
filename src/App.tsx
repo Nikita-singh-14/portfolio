@@ -1,39 +1,77 @@
 import { useState, useEffect } from 'react';
+import React from 'react'; // Added explicit React import for older TS/JSX environments
 
 // --- FIXED ICONS: Replacing all react-icons with lucide-react (which is natively available) ---
 import {
   Home, User, ListChecks, Briefcase, FolderKanban, Award, FileText, Phone, // Navigation & Section Icons
-  Menu, X, Linkedin, Github, Code // Utility & Social Icons (Sun and Moon added for toggle)
+  Menu, X, Linkedin, Github, Code // Utility & Social Icons
 } from 'lucide-react'
+
+// --- TYPE DEFINITIONS ---
+
+// Define the structure for a section item in PORTFOLIO_DATA
+interface SectionItem {
+  id: string;
+  title: string;
+  icon: React.ElementType; // Type for a React component (like an Icon component)
+}
+
+// Define the structure for the SidebarComponent props
+interface SidebarProps {
+  sections: SectionItem[];
+  activeSection: string;
+  onLinkClick: (id: string) => void; // Function that takes a string ID and returns void
+}
+
+// Define the structure for the Experience item
+interface ExperienceItem {
+  title: string;
+  company: string;
+  duration: string;
+  description: string;
+}
+
+// Define the structure for a Project item
+interface ProjectItem {
+  name: string;
+  description: string;
+  tags: string[];
+}
+
+// Define the structure for a Skill item
+interface SkillItem {
+    category: string;
+    items: string[];
+}
 
 // --- Global Data (Mock Content) ---
 const PORTFOLIO_DATA = {
   name: "Nikita Singh",
   tagline: "Full-Stack Developer | Innovator | Problem Solver",
   sections: [
-    { id: "home", title: "Home", icon: Home },
-    { id: 'about', title: 'About', icon: User },
-    { id: 'skills', title: 'Skills', icon: ListChecks },
-    { id: 'experience', title: 'Experience', icon: Briefcase },
-    { id: 'portfolio', title: 'Portfolio', icon: FolderKanban },
-    { id: 'certifications', title: 'Certifications', icon: Award },
-    { id: 'resume', title: 'Resume', icon: FileText },
-    { id: 'contact', title: 'Contact', icon: Phone },
+    { id: "home", title: "Home", icon: Home } as SectionItem,
+    { id: 'about', title: 'About', icon: User } as SectionItem,
+    { id: 'skills', title: 'Skills', icon: ListChecks } as SectionItem,
+    { id: 'experience', title: 'Experience', icon: Briefcase } as SectionItem,
+    { id: 'portfolio', title: 'Portfolio', icon: FolderKanban } as SectionItem,
+    { id: 'certifications', title: 'Certifications', icon: Award } as SectionItem,
+    { id: 'resume', title: 'Resume', icon: FileText } as SectionItem,
+    { id: 'contact', title: 'Contact', icon: Phone } as SectionItem,
   ],
   bio: "Hi, I'm Nikita Singh. I specialize in building robust and scalable web applications using React and the MERN stack. My passion lies in turning complex problems into elegant, efficient, and user-friendly code solutions. I have experience delivering high-quality projects for various tech challenges.",
   skills: [
-    { category: "Frontend", items: ["React.js", "Tailwind CSS", "JavaScript (ES6+)", "HTML5 & CSS3"] },
-    { category: "Backend", items: ["Node.js", "Express.js", "MongoDB", "REST APIs"] },
-    { category: "Tools & DevOps", items: ["Git", "GitHub", "VS Code", "Netlify/Vercel"] },
+    { category: "Frontend", items: ["React.js", "Tailwind CSS", "JavaScript (ES6+)", "HTML5 & CSS3"] } as SkillItem,
+    { category: "Backend", items: ["Node.js", "Express.js", "MongoDB", "REST APIs"] } as SkillItem,
+    { category: "Tools & DevOps", items: ["Git", "GitHub", "VS Code", "Netlify/Vercel"] } as SkillItem,
   ],
   experiences: [
-    { title: "MERN Stack Developer (Intern)", company: "WebTech Solutions", duration: "Jan 2024 - Jul 2024", description: "Developed and maintained several components using React and implemented REST APIs using Express/Node. Contributed to database schema design in MongoDB." },
-    { title: "Freelance Web Developer", company: "Self-Employed", duration: "2023 - Present", description: "Built custom websites for small businesses, focusing on responsive design and performance optimization." },
+    { title: "MERN Stack Developer (Intern)", company: "WebTech Solutions", duration: "Jan 2024 - Jul 2024", description: "Developed and maintained several components using React and implemented REST APIs using Express/Node. Contributed to database schema design in MongoDB." } as ExperienceItem,
+    { title: "Freelance Web Developer", company: "Self-Employed", duration: "2023 - Present", description: "Built custom websites for small businesses, focusing on responsive design and performance optimization." } as ExperienceItem,
   ],
   projects: [
-    { name: "Full-Stack E-commerce", description: "A complete e-commerce platform featuring authentication, product management, and payment gateway integration.", tags: ["MERN", "Redux", "Stripe"] },
-    { name: "Real-Time Chat App", description: "Used Socket.IO to implement instant messaging and user status updates.", tags: ["React", "Socket.IO", "Node.js"] },
-    { name: "Portfolio Website (This one!)", description: "Designed and implemented a responsive single-page portfolio using React and Tailwind CSS.", tags: ["React", "Tailwind CSS", "SPA"] },
+    { name: "Full-Stack E-commerce", description: "A complete e-commerce platform featuring authentication, product management, and payment gateway integration.", tags: ["MERN", "Redux", "Stripe"] } as ProjectItem,
+    { name: "Real-Time Chat App", description: "Used Socket.IO to implement instant messaging and user status updates.", tags: ["React", "Socket.IO", "Node.js"] } as ProjectItem,
+    { name: "Portfolio Website (This one!)", description: "Designed and implemented a responsive single-page portfolio using React and Tailwind CSS.", tags: ["React", "Tailwind CSS", "SPA"] } as ProjectItem,
   ],
   certs: [
     "Certified React Developer (Coursera)",
@@ -47,10 +85,9 @@ const PORTFOLIO_DATA = {
 interface SectionProps {
   id: string;
   title: string;
-  children: React.ReactNode; // Type for content passed inside the component
+  children: React.ReactNode;
 }
 
-// 2. Apply the type to the functional component
 const Section = ({ id, title, children }: SectionProps) => (
   <section id={id} className="min-h-screen pt-16 lg:pt-24 px-6 md:px-12 bg-gray-50 border-b border-gray-200 ">
     <h2 className="text-4xl font-extrabold mb-8 text-indigo-600 border-b-4 border-indigo-200 pb-2 inline-block">
@@ -60,163 +97,22 @@ const Section = ({ id, title, children }: SectionProps) => (
   </section>
 );
 
-const HomeSection = () => (
-  <section id="home" className="min-h-screen flex items-center justify-center text-center bg-gray-100 ">
-    <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-6xl md:text-8xl font-black text-gray-900] mb-4 leading-tight">
-        {PORTFOLIO_DATA.name}
-      </h1>
-      <p className="text-2xl md:text-4xl font-light text-indigo-600 dark:text-indigo-400 mb-8">
-        {PORTFOLIO_DATA.tagline}
-      </p>
-      <a href="#about" className="px-8 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
-        View My Work
-      </a>
-    </div>
-  </section>
-);
-
-const AboutSection = () => (
-  <Section id="about" title="About Me">
-    <div className="bg-blue-100 p-8 rounded-xl shadow-2xl">
-      <p className="text-black  text-xl leading-relaxed">
-        {PORTFOLIO_DATA.bio}
-      </p>
-    </div>
-  </Section>
-);
-
-const SkillsSection = () => (
-  <Section id="skills" title="Technical Skills">
-    <div className="grid md:grid-cols-3 gap-8">
-      {PORTFOLIO_DATA.skills.map((skill, index) => (
-        <div key={index} className="p-6 bg-white  rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-indigo-500">
-          <h3 className="text-2xl font-semibold mb-4 text-gray-800  flex items-center">
-            {/* Using Lucide Code icon */}
-            <Code className="w-6 h-6 mr-3 text-indigo-500" />
-            {skill.category}
-          </h3>
-          <ul className="space-y-3 list-none p-0">
-            {skill.items.map((item, i) => (
-              <li key={i} className="text-gray-600 dark:text-gray-400 font-medium">
-                <span className="text-indigo-500 mr-2 font-bold text-lg">•</span> {item}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  </Section>
-);
-
-const ExperienceSection = () => (
-  <Section id="experience" title="Work Experience">
-    <div className="space-y-10">
-      {PORTFOLIO_DATA.experiences.map((exp, index) => (
-        <div key={index} className="relative pl-8 sm:pl-32 group">
-          {/* Vertical Line */}
-          <div className="absolute top-0 left-0 h-full w-0.5 bg-gray-200 hidden sm:block"></div>
-          {/* Dot */}
-          <div className="absolute top-1 left-[-4px] w-4 h-4 rounded-full bg-indigo-600 group-hover:bg-pink-500 transition duration-300 hidden sm:block"></div>
-
-          <p className="text-sm font-medium text-gray-500  mb-1 sm:absolute sm:top-0 sm:left-0 sm:w-28 sm:text-right">{exp.duration}</p>
-          <h3 className="text-xl font-bold text-gray-800 ">{exp.title}</h3>
-          <p className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2">{exp.company}</p>
-          <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
-        </div>
-      ))}
-    </div>
-  </Section>
-);
-
-const PortfolioSection = () => (
-  <Section id="portfolio" title="Projects & Portfolio">
-    <div className="grid md:grid-cols-2 gap-8">
-      {PORTFOLIO_DATA.projects.map((project, index) => (
-        <div key={index} className="p-6 bg-white  rounded-xl shadow-2xl transition duration-300 hover:scale-[1.02] hover:border-indigo-500 border-2 border-transparent">
-          <h3 className="text-2xl font-bold mb-3 text-indigo-600 ">{project.name}</h3>
-          <p className="text-gray-700  mb-4">{project.description}</p>
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map((tag, i) => (
-              <span key={i} className="px-3 py-1 text-xs font-medium text-indigo-800 bg-indigo-100 rounded-full ">
-                {tag}
-              </span>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  </Section>
-);
-
-const CertificationsSection = () => (
-  <Section id="certifications" title="Certifications">
-    <div className="space-y-4">
-      {PORTFOLIO_DATA.certs.map((cert, index) => (
-        <div key={index} className="flex items-center p-4 bg-white  rounded-lg shadow-lg hover:bg-indigo-50  transition duration-200">
-          {/* Using Lucide Award icon */}
-          <Award className="w-6 h-6 mr-4 text-yellow-500 flex-shrink-0" />
-          <span className="text-gray-700  font-medium">{cert}</span>
-        </div>
-      ))}
-    </div>
-  </Section>
-);
-
-const ResumeSection = () => (
-  <Section id="resume" title="Resume">
-    <div className="text-center p-10 bg-white  rounded-xl shadow-2xl">
-      <p className="text-xl text-gray-700  mb-6">
-        You can download my full resume for a detailed view of my qualifications and professional history.
-      </p>
-      <a
-        href="#" // Placeholder: Replace with actual resume PDF link
-        className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white text-xl font-bold rounded-lg shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
-        download
-      >
-        {/* Using Lucide FileText icon */}
-        <FileText className="w-6 h-6 mr-3" />
-        Download Resume (PDF)
-      </a>
-    </div>
-  </Section>
-);
-
-const ContactSection = () => (
-  <Section id="contact" title="Get In Touch" >
-    <div className="flex flex-col justify-center items-center max-w-xl mx-auto p-6 bg-white gap-10">
-      <p className="text-center text-black  mb-8 text-lg">
-        I am currently open to new opportunities. Feel free to reach out via email using the form below!
-      </p>
-      <form className="space-y-4 bg-white  p-8 rounded-xl shadow-2xl flex flex-col gap-10 w-full ">
-        <input type="text" placeholder="Your Name" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-        <input type="email" placeholder="Your Email" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-        <textarea placeholder="Your Message" rows="5" className="w-full p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
-        <button type="submit" className="w-full py-4 h-12 bg-indigo-600 text-white font-bold text-lg rounded-xl hover:bg-indigo-700 transition duration-300 shadow-lg">
-          Send Message
-        </button>
-      </form>
-    </div>
-  </Section>
-);
-
-const FooterComponent = () => (
-  <footer className="w-full h-28 flex justify-center items-center p-6 text-center bg-gray-900 text-gray-400 text-sm">
-    <p>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved. Built with React & Tailwind CSS.</p>
-  </footer>
-);
+// ... (HomeSection, AboutSection, SkillsSection, ExperienceSection, PortfolioSection, CertificationsSection, ResumeSection, ContactSection, FooterComponent remain the same as they are already correctly typed or don't use props/complex logic)
 
 
+// --- Sidebar Component (Fixed) ---
 
-
-const SidebarComponent = ({ sections, activeSection, onLinkClick }) => {
+const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps) => { // Applied SidebarProps
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Function to handle link click
-  const handleLinkClick = (id) => {
-    onLinkClick(id); // Custom function to handle scroll in App component (if needed)
-    setIsMenuOpen(false); // Close menu on mobile
+  const handleLinkClick = (id: string) => { // Fixed: Explicitly typed 'id' as string (TS7006)
+    onLinkClick(id);
+    setIsMenuOpen(false);
   };
+
+  // Type definition for image error event
+  type ImgErrorEvent = React.SyntheticEvent<HTMLImageElement, Event>;
 
   return (
     <>
@@ -246,7 +142,12 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }) => {
             className='w-[11rem] h-[11rem] rounded-full object-cover border-4 border-gray-600 shadow-xl'
             src="profile.jpg"
             alt="Profile"
-            onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/180x180/374151/ffffff?text=Profile" }}
+            // Fixed: Correctly typed the onError handler (TS2339)
+            onError={(e: ImgErrorEvent) => {
+                const target = e.target as HTMLImageElement;
+                target.onerror = null;
+                target.src = "https://placehold.co/180x180/374151/ffffff?text=Profile";
+            }}
           />
           <h3 className='text-white text-3xl font-bold mt-2'>{PORTFOLIO_DATA.name}</h3>
           <div className='flex gap-4 text-white text-2xl'>
@@ -257,13 +158,14 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }) => {
         </div>
 
         <ul className='flex flex-col gap-5 mt-8 text-xl flex-grow overflow-y-auto'>
+          {/* Fixed: Implicit 'item' type resolved by using SectionItem[] in SidebarProps */}
           {sections.map((item) => {
             const Icon = item.icon;
             const isActive = activeSection === item.id;
             return (
               <a
                 key={item.id}
-                href={`#${item.id}`} // Single-page anchor link
+                href={`#${item.id}`}
                 className={`flex text-2xl items-center gap-4 cursor-pointer p-3 rounded-lg transition-colors duration-200 ${isActive ? 'text-white bg-indigo-600 shadow-lg font-semibold' : 'hover:text-white hover:bg-gray-800'}`}
                 onClick={() => handleLinkClick(item.id)}
               >
@@ -272,10 +174,7 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }) => {
               </a>
             )
           })}
-
         </ul>
-
-
       </div>
 
       {/* Mobile Overlay */}
@@ -289,14 +188,161 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }) => {
   );
 };
 
+
+
+const HomeSection = () => (
+  <section id="home" className="min-h-screen flex items-center justify-center text-center bg-gray-100 ">
+    <div className="p-8 max-w-4xl mx-auto">
+      <h1 className="text-6xl md:text-8xl font-black text-gray-900] mb-4 leading-tight">
+        {PORTFOLIO_DATA.name}
+      </h1>
+      <p className="text-2xl md:text-4xl font-light text-indigo-600 dark:text-indigo-400 mb-8">
+        {PORTFOLIO_DATA.tagline}
+      </p>
+      <a href="#about" className="px-8 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
+        View My Work
+      </a>
+    </div>
+  </section>
+);
+const AboutSection = () => (
+  <Section id="about" title="About Me">
+    <div className="bg-blue-100 p-8 rounded-xl shadow-2xl">
+      <p className="text-black  text-xl leading-relaxed">
+        {PORTFOLIO_DATA.bio}
+      </p>
+    </div>
+  </Section>
+);
+const SkillsSection = () => (
+  <Section id="skills" title="Technical Skills">
+    <div className="grid md:grid-cols-3 gap-8">
+      {PORTFOLIO_DATA.skills.map((skill, index) => (
+        <div key={index} className="p-6 bg-white  rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-indigo-500">
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800  flex items-center">
+            {/* Using Lucide Code icon */}
+            <Code className="w-6 h-6 mr-3 text-indigo-500" />
+            {skill.category}
+          </h3>
+          <ul className="space-y-3 list-none p-0">
+            {skill.items.map((item, i) => (
+              <li key={i} className="text-gray-600 dark:text-gray-400 font-medium">
+                <span className="text-indigo-500 mr-2 font-bold text-lg">•</span> {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </Section>
+);
+const ExperienceSection = () => (
+  <Section id="experience" title="Work Experience">
+    <div className="space-y-10">
+      {PORTFOLIO_DATA.experiences.map((exp, index) => (
+        <div key={index} className="relative pl-8 sm:pl-32 group">
+          {/* Vertical Line */}
+          <div className="absolute top-0 left-0 h-full w-0.5 bg-gray-200 hidden sm:block"></div>
+          {/* Dot */}
+          <div className="absolute top-1 left-[-4px] w-4 h-4 rounded-full bg-indigo-600 group-hover:bg-pink-500 transition duration-300 hidden sm:block"></div>
+
+          <p className="text-sm font-medium text-gray-500  mb-1 sm:absolute sm:top-0 sm:left-0 sm:w-28 sm:text-right">{exp.duration}</p>
+          <h3 className="text-xl font-bold text-gray-800 ">{exp.title}</h3>
+          <p className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2">{exp.company}</p>
+          <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+);
+const PortfolioSection = () => (
+  <Section id="portfolio" title="Projects & Portfolio">
+    <div className="grid md:grid-cols-2 gap-8">
+      {PORTFOLIO_DATA.projects.map((project, index) => (
+        <div key={index} className="p-6 bg-white  rounded-xl shadow-2xl transition duration-300 hover:scale-[1.02] hover:border-indigo-500 border-2 border-transparent">
+          <h3 className="text-2xl font-bold mb-3 text-indigo-600 ">{project.name}</h3>
+          <p className="text-gray-700  mb-4">{project.description}</p>
+          <div className="flex flex-wrap gap-2">
+            {project.tags.map((tag, i) => (
+              <span key={i} className="px-3 py-1 text-xs font-medium text-indigo-800 bg-indigo-100 rounded-full ">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </Section>
+);
+const CertificationsSection = () => (
+  <Section id="certifications" title="Certifications">
+    <div className="space-y-4">
+      {PORTFOLIO_DATA.certs.map((cert, index) => (
+        <div key={index} className="flex items-center p-4 bg-white  rounded-lg shadow-lg hover:bg-indigo-50  transition duration-200">
+          {/* Using Lucide Award icon */}
+          <Award className="w-6 h-6 mr-4 text-yellow-500 flex-shrink-0" />
+          <span className="text-gray-700  font-medium">{cert}</span>
+        </div>
+      ))}
+    </div>
+  </Section>
+);
+const ResumeSection = () => (
+  <Section id="resume" title="Resume">
+    <div className="text-center p-10 bg-white  rounded-xl shadow-2xl">
+      <p className="text-xl text-gray-700  mb-6">
+        You can download my full resume for a detailed view of my qualifications and professional history.
+      </p>
+      <a
+        href="#" // Placeholder: Replace with actual resume PDF link
+        className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white text-xl font-bold rounded-lg shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
+        download
+      >
+        {/* Using Lucide FileText icon */}
+        <FileText className="w-6 h-6 mr-3" />
+        Download Resume (PDF)
+      </a>
+    </div>
+  </Section>
+);
+const ContactSection = () => (
+  <Section id="contact" title="Get In Touch" >
+    <div className="flex flex-col justify-center items-center max-w-xl mx-auto p-6 bg-white gap-10">
+      <p className="text-center text-black  mb-8 text-lg">
+        I am currently open to new opportunities. Feel free to reach out via email using the form below!
+      </p>
+      <form className="space-y-4 bg-white  p-8 rounded-xl shadow-2xl flex flex-col gap-10 w-full ">
+        <input type="text" placeholder="Your Name" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+        <input type="email" placeholder="Your Email" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+        <textarea placeholder="Your Message" rows="5" className="w-full p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+        <button type="submit" className="w-full py-4 h-12 bg-indigo-600 text-white font-bold text-lg rounded-xl hover:bg-indigo-700 transition duration-300 shadow-lg">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </Section>
+);
+const FooterComponent = () => (
+  <footer className="w-full h-28 flex justify-center items-center p-6 text-center bg-gray-900 text-gray-400 text-sm">
+    <p>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved. Built with React & Tailwind CSS.</p>
+  </footer>
+);
+
+
 // --- Main App Component ---
 
 const App = () => {
   // State to track the active section for highlighting the sidebar link
   const [activeSection, setActiveSection] = useState('home');
 
-
-
+  // Define the type for the IntersectionObserverEntry array (TS7006/TS7031)
+  const observerCallback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry: IntersectionObserverEntry) => {
+      if (entry.isIntersecting) {
+        setActiveSection(entry.target.id);
+      }
+    });
+  };
 
   // Effect to set up Intersection Observer for scroll-based active state
   useEffect(() => {
@@ -304,14 +350,6 @@ const App = () => {
       root: null, // viewport
       rootMargin: '0px 0px -50% 0px', // Trigger when section is 50% into viewport
       threshold: 0.1,
-    };
-
-    const observerCallback = (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -328,10 +366,8 @@ const App = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Function to handle click and force scroll if needed (though scroll-smooth should handle it)
-  const handleSidebarLinkClick = (id) => {
-    // This is mainly to ensure the section is scrolled into view, 
-    // though the href="#id" combined with scroll-smooth CSS often suffices.
+  // Function to handle click and force scroll if needed (TS7006)
+  const handleSidebarLinkClick = (id: string) => { // Fixed: Explicitly typed 'id'
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -339,7 +375,7 @@ const App = () => {
   };
 
   return (
-
+    // ... (App JSX structure remains the same)
     <div className="min-h-screen antialiased font-sans flex bg-white">
 
       {/* 1. Fixed Sidebar */}
@@ -360,18 +396,11 @@ const App = () => {
           <CertificationsSection />
           <ResumeSection />
           <ContactSection />
-
-
         </div>
         <div className='position bottom-0'>
           <FooterComponent />
         </div>
-        
-
       </div>
-
-
-
     </div>
   );
 };
