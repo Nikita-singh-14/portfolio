@@ -1,0 +1,103 @@
+@import "tailwindcss";
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+p{
+  font-size: 1.5rem;
+}
+b{
+  font-size: 2rem;
+}
+
+.navbar-conatiner{
+  padding: 2rem;
+}
+
+
+/*:root {
+  --text-color: #1a1a1a;
+  --bg-color: #fff;
+}
+
+[data-theme='dark'] {
+  --text-color: #f0f0f0;
+  --bg-color: #1a1a1a;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+  width: 100%;
+}*/
+ul{
+  padding-left: 2rem;
+}
+.sidebar{
+  padding-top: 3rem;
+}
+.side ul{
+  margin-left: 6%;
+}
+.hamburger{
+  padding:10px 10px;
+}
+.side{
+  padding-top: 10px;
+}
+.about{
+  padding: 40px;
+}
+.about li{
+  font-size: 1.5rem;
+}
+.about .box {
+  font-size: 1.3rem;
+}
+
+.tech{
+  padding-left: 2.5rem;
+}
+.box{
+  background-color: rgb(128, 128, 243);
+  color: #fff;
+  padding: 0.2rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.box:hover{
+  background-color: rgb(63, 63, 238);
+}
+
+.cert img{
+  width: 20rem;
+}
+.footer{
+  padding-left: 2rem;
+  bottom: 0;
+  position: fixed;
+}
+.foot{
+  align-items: center;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+
+
+
+
+.contBox{
+  background-color: aliceblue;
+  height: auto;
+  padding: 2rem;
+  box-shadow: 0 4px 8px rgba(2, 73, 114, 0.3);
+  border-radius: 2%;
+}
+
+
+.burger{
+  padding: 1rem;
+}
