@@ -1,4 +1,4 @@
-import React, { FC, useState, FormEvent, SVGProps } from 'react';
+import { FC, useState, FormEvent, SVGProps } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L, { LatLngExpression } from 'leaflet'; // Import LatLngExpression for typing

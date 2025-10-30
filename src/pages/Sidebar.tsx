@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import React from 'react'; // Retaining for compatibility if needed, though usually implicit
 
 // Using lucide-react for consistency with App.tsx
 import {
