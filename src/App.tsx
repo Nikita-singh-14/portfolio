@@ -1,5 +1,7 @@
+
+
+
 import { useState, useEffect } from 'react';
- // Added explicit React import for older TS/JSX environments
 
 // --- FIXED ICONS: Replacing all react-icons with lucide-react (which is natively available) ---
 import {
@@ -89,16 +91,14 @@ interface SectionProps {
 }
 
 const Section = ({ id, title, children }: SectionProps) => (
-  <section id={id} className="min-h-screen pt-16 lg:pt-24 px-6 md:px-12 bg-gray-50 border-b border-gray-200 ">
+  // Added responsive padding for better mobile viewing
+  <section id={id} className="min-h-screen pt-16 lg:pt-24 px-4 md:px-8 bg-gray-50 border-b border-gray-200">
     <h2 className="text-4xl font-extrabold mb-8 text-indigo-600 border-b-4 border-indigo-200 pb-2 inline-block">
       {title}
     </h2>
     <div className="py-6">{children}</div>
   </section>
 );
-
-// ... (HomeSection, AboutSection, SkillsSection, ExperienceSection, PortfolioSection, CertificationsSection, ResumeSection, ContactSection, FooterComponent remain the same as they are already correctly typed or don't use props/complex logic)
-
 
 // --- Sidebar Component (Fixed) ---
 
@@ -117,15 +117,18 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
   return (
     <>
       {/* Toggle button - Fixed on top right for mobile */}
-      <div className='absolute top-4 right-4 z-50 lg:hidden '>
+      {/* FIX: Reverted 'absolute' to 'fixed' for correct mobile persistence and fixed CSS typo */}
+      <div className='fixed top-4 right-4 z-50 lg:hidden'>
         {isMenuOpen ? (
           <X // Close Icon
-            className="text-5xl cursor-pointer text-white burger rounded-lg bg-black hover:bg-gray-900transition"
+            // FIX: Corrected typo 'hover:bg-gray-900transition' and used 5xl size
+            className="text-5xl p-1 cursor-pointer text-white rounded-lg bg-gray-900 hover:bg-gray-800 transition"
             onClick={() => setIsMenuOpen(false)}
           />
         ) : (
           <Menu // Menu Icon
-            className="text-5xl cursor-pointer text-white burger rounded-lg bg-black hover:bg-gray-900 transition"
+            // FIX: Corrected typo 'hover:bg-gray-900transition' and used 5xl size
+            className="text-5xl p-1 cursor-pointer text-white rounded-lg bg-gray-900 hover:bg-gray-800 transition"
             onClick={() => setIsMenuOpen(true)}
           />
         )}
@@ -133,7 +136,7 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
 
       {/* Sidebar - Fixed for Desktop, Slide-out for Mobile */}
       <div
-        className={`flex-col gap-8 bg-gray-900 text-gray-400 w-[20rem] h-screen fixed top-0 left-0 z-40 p-6 transition-transform duration-300 ease-in-out lg:flex flex-shrink-0 ${isMenuOpen ? 'translate-x-0 flex' : '-translate-x-full lg:translate-x-0'}`}
+        className={`flex-col gap-8 bg-gray-900 text-gray-400 w-full max-w-[20rem] h-screen fixed top-0 left-0 z-40 p-6 transition-transform duration-300 ease-in-out lg:flex flex-shrink-0 shadow-2xl ${isMenuOpen ? 'translate-x-0 flex' : '-translate-x-full lg:translate-x-0'}`}
       >
         {/* Profile Section */}
         <div className='flex flex-col items-center gap-2 mt-4 sidebar'>
@@ -142,7 +145,7 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
             className='w-[11rem] h-[11rem] rounded-full object-cover border-4 border-gray-600 shadow-xl'
             src="profile.jpg"
             alt="Profile"
-            // Fixed: Correctly typed the onError handler (TS2339)
+            // Fixed: Correctly typed the onError handler
             onError={(e: ImgErrorEvent) => {
                 const target = e.target as HTMLImageElement;
                 target.onerror = null;
@@ -166,10 +169,11 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
               <a
                 key={item.id}
                 href={`#${item.id}`}
-                className={`flex text-2xl items-center gap-4 cursor-pointer p-3 rounded-lg transition-colors duration-200 ${isActive ? 'text-white bg-indigo-600 shadow-lg font-semibold' : 'hover:text-white hover:bg-gray-800'}`}
+                // Preserved user's text-2xl size
+                className={`flex text-2xl items-center gap-4 cursor-pointer p-3 rounded-xl transition-colors duration-200 ${isActive ? 'text-white bg-indigo-600 shadow-lg font-semibold' : 'hover:text-white hover:bg-gray-800'}`}
                 onClick={() => handleLinkClick(item.id)}
               >
-                <Icon className='text-2xl' />
+                <Icon className='text-2xl' /> {/* Preserved user's icon size */}
                 <span>{item.title}</span>
               </a>
             )
@@ -189,14 +193,13 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
 };
 
 
-
 const HomeSection = () => (
-  <section id="home" className="min-h-screen flex items-center justify-center text-center bg-gray-100 ">
+  <section id="home" className="min-h-screen flex items-center justify-center text-center bg-gray-100">
     <div className="p-8 max-w-4xl mx-auto">
-      <h1 className="text-6xl md:text-8xl font-black text-gray-900] mb-4 leading-tight">
+      <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-4 leading-tight">
         {PORTFOLIO_DATA.name}
       </h1>
-      <p className="text-2xl md:text-4xl font-light text-indigo-600 dark:text-indigo-400 mb-8">
+      <p className="text-2xl md:text-4xl font-light text-indigo-600 mb-8">
         {PORTFOLIO_DATA.tagline}
       </p>
       <a href="#about" className="px-8 py-3 bg-indigo-600 text-white text-lg font-semibold rounded-lg shadow-lg hover:bg-indigo-700 transition duration-300">
@@ -208,7 +211,7 @@ const HomeSection = () => (
 const AboutSection = () => (
   <Section id="about" title="About Me">
     <div className="bg-blue-100 p-8 rounded-xl shadow-2xl">
-      <p className="text-black  text-xl leading-relaxed">
+      <p className="text-black text-xl leading-relaxed">
         {PORTFOLIO_DATA.bio}
       </p>
     </div>
@@ -218,15 +221,15 @@ const SkillsSection = () => (
   <Section id="skills" title="Technical Skills">
     <div className="grid md:grid-cols-3 gap-8">
       {PORTFOLIO_DATA.skills.map((skill, index) => (
-        <div key={index} className="p-6 bg-white  rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-indigo-500">
-          <h3 className="text-2xl font-semibold mb-4 text-gray-800  flex items-center">
+        <div key={index} className="p-6 bg-white rounded-xl shadow-xl hover:shadow-2xl transition duration-300 border-t-4 border-indigo-500">
+          <h3 className="text-2xl font-semibold mb-4 text-gray-800 flex items-center">
             {/* Using Lucide Code icon */}
             <Code className="w-6 h-6 mr-3 text-indigo-500" />
             {skill.category}
           </h3>
           <ul className="space-y-3 list-none p-0">
             {skill.items.map((item, i) => (
-              <li key={i} className="text-gray-600 dark:text-gray-400 font-medium">
+              <li key={i} className="text-gray-600 font-medium">
                 <span className="text-indigo-500 mr-2 font-bold text-lg">•</span> {item}
               </li>
             ))}
@@ -246,10 +249,10 @@ const ExperienceSection = () => (
           {/* Dot */}
           <div className="absolute top-1 left-[-4px] w-4 h-4 rounded-full bg-indigo-600 group-hover:bg-pink-500 transition duration-300 hidden sm:block"></div>
 
-          <p className="text-sm font-medium text-gray-500  mb-1 sm:absolute sm:top-0 sm:left-0 sm:w-28 sm:text-right">{exp.duration}</p>
+          <p className="text-sm font-medium text-gray-500 mb-1 sm:absolute sm:top-0 sm:left-0 sm:w-28 sm:text-right">{exp.duration}</p>
           <h3 className="text-xl font-bold text-gray-800 ">{exp.title}</h3>
-          <p className="text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-2">{exp.company}</p>
-          <p className="text-gray-600 dark:text-gray-300">{exp.description}</p>
+          <p className="text-lg font-semibold text-indigo-600 mb-2">{exp.company}</p>
+          <p className="text-gray-600">{exp.description}</p>
         </div>
       ))}
     </div>
@@ -259,9 +262,9 @@ const PortfolioSection = () => (
   <Section id="portfolio" title="Projects & Portfolio">
     <div className="grid md:grid-cols-2 gap-8">
       {PORTFOLIO_DATA.projects.map((project, index) => (
-        <div key={index} className="p-6 bg-white  rounded-xl shadow-2xl transition duration-300 hover:scale-[1.02] hover:border-indigo-500 border-2 border-transparent">
+        <div key={index} className="p-6 bg-white rounded-xl shadow-2xl transition duration-300 hover:scale-[1.02] hover:border-indigo-500 border-2 border-transparent">
           <h3 className="text-2xl font-bold mb-3 text-indigo-600 ">{project.name}</h3>
-          <p className="text-gray-700  mb-4">{project.description}</p>
+          <p className="text-gray-700 mb-4">{project.description}</p>
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag, i) => (
               <span key={i} className="px-3 py-1 text-xs font-medium text-indigo-800 bg-indigo-100 rounded-full ">
@@ -278,10 +281,10 @@ const CertificationsSection = () => (
   <Section id="certifications" title="Certifications">
     <div className="space-y-4">
       {PORTFOLIO_DATA.certs.map((cert, index) => (
-        <div key={index} className="flex items-center p-4 bg-white  rounded-lg shadow-lg hover:bg-indigo-50  transition duration-200">
+        <div key={index} className="flex items-center p-4 bg-white rounded-lg shadow-lg hover:bg-indigo-50 transition duration-200">
           {/* Using Lucide Award icon */}
           <Award className="w-6 h-6 mr-4 text-yellow-500 flex-shrink-0" />
-          <span className="text-gray-700  font-medium">{cert}</span>
+          <span className="text-gray-700 font-medium">{cert}</span>
         </div>
       ))}
     </div>
@@ -289,13 +292,13 @@ const CertificationsSection = () => (
 );
 const ResumeSection = () => (
   <Section id="resume" title="Resume">
-    <div className="text-center p-10 bg-white  rounded-xl shadow-2xl">
-      <p className="text-xl text-gray-700  mb-6">
+    <div className="text-center p-10 bg-white rounded-xl shadow-2xl">
+      <p className="text-xl text-gray-700 mb-6">
         You can download my full resume for a detailed view of my qualifications and professional history.
       </p>
       <a
         href="#" // Placeholder: Replace with actual resume PDF link
-        className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white text-xl font-bold rounded-lg shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
+        className="inline-flex items-center px-8 py-4 bg-indigo-600 text-white text-xl font-bold rounded-xl shadow-xl hover:bg-indigo-700 transition duration-300 transform hover:scale-105"
         download
       >
         {/* Using Lucide FileText icon */}
@@ -308,13 +311,15 @@ const ResumeSection = () => (
 const ContactSection = () => (
   <Section id="contact" title="Get In Touch" >
     <div className="flex flex-col justify-center items-center max-w-xl mx-auto p-6 bg-white gap-10">
-      <p className="text-center text-black  mb-8 text-lg">
+      <p className="text-center text-black mb-8 text-lg">
         I am currently open to new opportunities. Feel free to reach out via email using the form below!
       </p>
-      <form className="space-y-4 bg-white  p-8 rounded-xl shadow-2xl flex flex-col gap-10 w-full ">
-        <input type="text" placeholder="Your Name" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-        <input type="email" placeholder="Your Email" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-        <textarea placeholder="Your Message" className="w-full p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+      {/* Note: In a real app, this form would require a backend service for submission. */}
+      <form className="space-y-4 bg-white p-8 rounded-xl shadow-2xl flex flex-col gap-10 w-full ">
+        <input type="text" placeholder="Your Name" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500" />
+        <input type="email" placeholder="Your Email" className="w-full h-12 p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500" />
+        {/* FIX: Ensure 'rows' is passed as a number literal to avoid TS2322 (Type 'string' is not assignable to type 'number') */}
+        <textarea placeholder="Your Message" rows={5} className="w-full p-4 border border-gray-300 rounded-xl focus:ring-indigo-500 focus:border-indigo-500"></textarea>
         <button type="submit" className="w-full py-4 h-12 bg-indigo-600 text-white font-bold text-lg rounded-xl hover:bg-indigo-700 transition duration-300 shadow-lg">
           Send Message
         </button>
@@ -323,7 +328,7 @@ const ContactSection = () => (
   </Section>
 );
 const FooterComponent = () => (
-  <footer className="w-full h-28 flex justify-center items-center p-6 text-center bg-gray-900 text-gray-400 text-sm">
+  <footer className="w-full flex justify-center items-center p-6 text-center bg-gray-900 text-gray-400 text-sm h-28">
     <p>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved. Built with React & Tailwind CSS.</p>
   </footer>
 );
@@ -335,9 +340,10 @@ const App = () => {
   // State to track the active section for highlighting the sidebar link
   const [activeSection, setActiveSection] = useState('home');
 
-  // Define the type for the IntersectionObserverEntry array (TS7006/TS7031)
+  // Define the type for the IntersectionObserverEntry array
   const observerCallback: IntersectionObserverCallback = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
+      // Use the entry that is currently intersecting the root margin
       if (entry.isIntersecting) {
         setActiveSection(entry.target.id);
       }
@@ -348,8 +354,9 @@ const App = () => {
   useEffect(() => {
     const observerOptions = {
       root: null, // viewport
-      rootMargin: '0px 0px -50% 0px', // Trigger when section is 50% into viewport
-      threshold: 0.1,
+      // Trigger when section is 25% (mobile) to 50% (desktop) into viewport.
+      rootMargin: '0px 0px -25% 0px', 
+      threshold: [0.0, 0.1, 0.25, 0.5, 0.75, 1.0],
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
@@ -366,41 +373,47 @@ const App = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Function to handle click and force scroll if needed (TS7006)
-  const handleSidebarLinkClick = (id: string) => { // Fixed: Explicitly typed 'id'
+  // Function to handle click and force scroll if needed
+  const handleSidebarLinkClick = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
+      // Scroll to the element smoothly
       element.scrollIntoView({ behavior: 'smooth' });
+      // Wait for a short duration and then update active section to reflect navigation for quick clicks
+      setTimeout(() => setActiveSection(id), 300); 
     }
   };
 
   return (
-    // ... (App JSX structure remains the same)
-    <div className="min-h-screen antialiased font-sans flex bg-white">
-
-      {/* 1. Fixed Sidebar */}
-      <div className="hidden lg:block fixed top-0 left-0 h-screen w-[20rem] bg-white shadow-md z-50">
+    <div className="min-h-screen antialiased font-sans bg-white">
+      {/* 1. Fixed Sidebar container for Desktop */}
+      <div className="hidden lg:block fixed top-0 left-0 h-screen w-[20rem] z-50">
         <SidebarComponent
           sections={PORTFOLIO_DATA.sections}
           activeSection={activeSection}
           onLinkClick={handleSidebarLinkClick}
         />
       </div>
-      <div className='flex flex-col'>
-        <div className="flex flex-col gap-10 justify-center items-center w-full max-h-screen overflow-y-scroll scroll-smooth lg:ml-[20rem]">
-          <HomeSection />
-          <AboutSection />
-          <SkillsSection />
-          <ExperienceSection />
-          <PortfolioSection />
-          <CertificationsSection />
-          <ResumeSection />
-          <ContactSection />
-        </div>
-        <div className='position bottom-0'>
-          <FooterComponent />
-        </div>
-      </div>
+      
+      {/* 2. Sidebar component handles mobile display (menu button, slide-out, overlay) */}
+      <SidebarComponent
+        sections={PORTFOLIO_DATA.sections}
+        activeSection={activeSection}
+        onLinkClick={handleSidebarLinkClick}
+      />
+      
+      {/* 3. Main Content Area */}
+      <main className="w-full lg:ml-[20rem] scroll-smooth">
+        <HomeSection />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <PortfolioSection />
+        <CertificationsSection />
+        <ResumeSection />
+        <ContactSection />
+        <FooterComponent />
+      </main>
     </div>
   );
 };
