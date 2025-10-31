@@ -6,7 +6,7 @@ import { FaLinkedin, FaGithub, FaXTwitter } from "react-icons/fa6";
 import { RxAvatar } from "react-icons/rx";
 import { GrUserExpert, GrCertificate } from "react-icons/gr";
 import { RiImportFill } from "react-icons/ri";
-import { MdOutlineEventNote, MdOutlineEventSeat } from "react-icons/md";
+import { MdOutlineEventNote } from "react-icons/md";
 import { IoReorderThree, IoClose } from "react-icons/io5";
 
 const Sidebar = ({ sections, activeSection, onLinkClick }) => {
