@@ -142,7 +142,7 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
         <div className='flex flex-col items-center gap-2 mt-4 sidebar'>
           {/* Using a placeholder image URL for simplicity */}
           <img
-            className='w-[11rem] h-[11rem] rounded-full object-cover border-4 border-gray-600 shadow-xl'
+            className='w-[10rem] h-[10rem] rounded-full object-cover border-4 border-gray-600 shadow-xl'
             src="profile.jpg"
             alt="Profile"
             // Fixed: Correctly typed the onError handler
@@ -152,7 +152,7 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
                 target.src = "https://placehold.co/180x180/374151/ffffff?text=Profile";
             }}
           />
-          <h3 className='text-white text-3xl font-bold mt-2'>{PORTFOLIO_DATA.name}</h3>
+          <h3 className='text-white text-2xl font-bold mt-2'>{PORTFOLIO_DATA.name}</h3>
           <div className='flex gap-4 text-white text-2xl'>
             <a href="https://www.linkedin.com/in/nikita-singh-3560652bb/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin className='hover:text-blue-400 transition duration-200' /></a>
             <a href="https://github.com/Nikita-singh-14" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github className='hover:text-blue-400 transition duration-200' /></a>
@@ -170,7 +170,7 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
                 key={item.id}
                 href={`#${item.id}`}
                 // Preserved user's text-2xl size
-                className={`flex text-2xl items-center gap-4 cursor-pointer p-3 rounded-xl transition-colors duration-200 ${isActive ? 'text-white bg-indigo-600 shadow-lg font-semibold' : 'hover:text-white hover:bg-gray-800'}`}
+                className={`flex text-xl items-center gap-3 cursor-pointer p-3 rounded-xl transition-colors duration-200 ${isActive ? 'text-white bg-indigo-600 shadow-lg font-semibold pl-3' : 'hover:text-white hover:bg-gray-800'}`}
                 onClick={() => handleLinkClick(item.id)}
               >
                 <Icon className='text-2xl' /> {/* Preserved user's icon size */}
@@ -194,7 +194,11 @@ const SidebarComponent = ({ sections, activeSection, onLinkClick }: SidebarProps
 
 
 const HomeSection = () => (
-  <section id="home" className="min-h-screen flex items-center justify-center text-center bg-gray-100">
+  <section id="home" className="min-h-screen flex place-items-end justify-center text-center bg-gray-100 bg-cover bg-center"
+  style={{
+     
+      backgroundImage: `url('pic.jpg')`,
+    }}>
     <div className="p-8 max-w-4xl mx-auto">
       <h1 className="text-6xl md:text-8xl font-black text-gray-900 mb-4 leading-tight">
         {PORTFOLIO_DATA.name}
@@ -328,7 +332,7 @@ const ContactSection = () => (
   </Section>
 );
 const FooterComponent = () => (
-  <footer className="w-full flex justify-center items-center p-6 text-center bg-gray-900 text-gray-400 text-sm h-28">
+  <footer className="w-full flex justify-center items-center p-6 text-center bg-gray-900 text-gray-400 text-xs h-18">
     <p>&copy; {new Date().getFullYear()} {PORTFOLIO_DATA.name}. All rights reserved. Built with React & Tailwind CSS.</p>
   </footer>
 );
@@ -412,8 +416,11 @@ const App = () => {
         <CertificationsSection />
         <ResumeSection />
         <ContactSection />
-        <FooterComponent />
+        
       </main>
+      <div className='bottom-0 relative w-full'>
+        <FooterComponent />
+      </div>
     </div>
   );
 };
