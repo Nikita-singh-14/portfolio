@@ -1,12 +1,12 @@
 
 import Map from './Map';
 
-const Contact = () => {
+const Contact = ({id}) => {
 
 
 
     return (
-        <div className='about flex flex-col gap-10 h-full'>
+        <div id={id} className='about flex flex-col gap-10 '>
             <div >
                 <b className='text-2xl'>Contact</b>
                 <div className='h-[0.4rem] bg-blue-500 w-[7.5rem] rounded-2xl'></div>

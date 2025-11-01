@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const Home = () => {
+const Home = ({id}) => {
     const roles = ["FullStack Developer", "Graphics Designer"];
     const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
     
@@ -30,7 +30,7 @@ const Home = () => {
     const currentRole = roles[currentRoleIndex];
 
     return (
-        <div className=" h-full flex flex-col   p-10 bg-[url('pic.jpg')] bg-cover  w-full justify-center items-center">
+        <div id={id} className=" h-[21%] flex flex-col   p-10 bg-[url('pic.jpg')] bg-cover  w-full justify-center items-center">
             <h1 className="text-6xl font-bold text-gray-800">Nikita Singh</h1>
             
             <p className="text-2xl text-gray-600 mt-2">

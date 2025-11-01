@@ -13,19 +13,19 @@ import Contact from './pages/Contact';
 function App() {
 
   return (
-      <div className='lg:flex min-h-screen'> 
+      <div className='lg:flex '> 
         <div className=" lg:block lg:w-[20rem] flex-shrink-0  md:block"> 
           <Sidebar />
         </div>
         <div className='flex-grow w-full'>
-         <Home />
-         <About />
-         <Exp />
-         <Portfolio />
-         <Resume />
-         <Skills />
-         <Cert /> 
-         <Contact />
+         <Home id="home"/>
+         <About id="about" />
+         <Exp id="experience" />
+         <Portfolio id="portfolio" />
+         <Resume id="resume" />
+         <Skills id="skills" />
+         <Cert id="certifications" /> 
+         <Contact id="contact" />
          <Footer />
           
         </div>

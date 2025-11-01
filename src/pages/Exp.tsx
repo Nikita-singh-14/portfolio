@@ -1,12 +1,12 @@
 
-const Exp = () => {
+const Exp = ({id}) => {
   return (
-    <div className='about flex flex-col gap-10 h-full'>
+    <div id={id} className='about flex flex-col gap-10 '>
             <div >
                 <b className='text-2xl'>Experiences</b>
                 <div className='h-[0.4rem] bg-blue-500 w-[11.5rem] rounded-2xl'></div>
             </div>
-            <div className='flex flex-col flex-1 md:flex-row gap-8 '>
+            <div className='flex flex-col flex-1 md:flex-row gap-8 justify-between'>
                 <div>
                     
                     <div className='flex flex-col gap-2'>

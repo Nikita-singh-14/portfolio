@@ -1,5 +1,6 @@
 import { useState } from 'react'
 // Import all icons here...
+
 import { CiHome, CiPhone } from "react-icons/ci";
 import { FaTasks } from "react-icons/fa"; 
 import { FaLinkedin, FaGithub, FaXTwitter } from "react-icons/fa6";
@@ -27,8 +28,8 @@ const Sidebar = ({ sections, activeSection, onLinkClick }) => {
         { id: 'contact', title: 'Contact',  icon: CiPhone },
     ];
      const handleLinkClick = (id) => {
-      onLinkClick(id); // Custom function to handle scroll in App component (if needed)
-      setIsMenuOpen(false); // Close menu on mobile
+      onLinkClick(id); 
+      setIsMenuOpen(false); 
   };
 
     return (
@@ -73,19 +74,19 @@ const Sidebar = ({ sections, activeSection, onLinkClick }) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.id;
                 return (
-                    <a
+                    <a  
                         key={item.id}
                         href={`#${item.id}`} // Single-page anchor link
                         className={`
-                            flex items-center gap-4 cursor-pointer p-3 rounded-lg transition-colors duration-200
+                            flex items-center gap-4 cursor-pointer p-3 rounded-lg transition-colors duration-200 
                             ${isActive 
                                 ? 'text-white bg-indigo-600 shadow-lg font-semibold' 
-                                : 'hover:text-white hover:bg-gray-800'
+                                : 'hover:text-blue-400'
                             }
                         `}
                         onClick={() => handleLinkClick(item.id)} 
-                    >
-                        <Icon className='text-2xl' />
+                    >   
+                        <Icon className='text-2xl'  />
                         <span>{item.title}</span>
                     </a>
                 )

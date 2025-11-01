@@ -1,12 +1,12 @@
 
-const Resume = () => {
+const Resume = ({id}) => {
   return (
-    <div className='about flex flex-col gap-10 h-full'>
+    <div id={id} className='about flex flex-col gap-10 w-full'>
             <div >
                 <b className='text-2xl'>Resume</b>
                 <div className='h-[0.3rem] bg-blue-500 w-[8rem] rounded-2xl '></div>
             </div>
-            <div className='flex flex-col flex-1 md:flex-row gap-8 '>
+            <div className='flex flex-col flex-1 md:flex-row justify-between'>
                 <div>
                     
                     <div className='flex flex-col gap-2'>

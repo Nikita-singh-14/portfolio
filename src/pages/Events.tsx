@@ -1,8 +1,8 @@
 
 
-export const Events = () => {
+export const Events = ({id}) => {
   return (
-    <div className='about flex flex-col gap-10 h-full'>
+    <div id={id} className='about flex flex-col gap-10'>
             <div >
                 <b className='text-2xl'>Events</b>
                 <div className='h-[0.4rem] bg-blue-500 w-[4.5rem] '></div>

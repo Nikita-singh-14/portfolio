@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+html { scroll-behavior:inherit; }
 p{
   font-size: 1.5rem;
 }
@@ -72,7 +73,7 @@ ul{
 }
 
 .cert img{
-  width: 20rem;
+  width: 32rem;
 }
 .footer{
   padding-left: 2rem;
