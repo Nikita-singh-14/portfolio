@@ -1,7 +1,10 @@
 
 import Map from './Map';
+interface ContactProps{
+  id: string; // or whatever type 'id' should be
+}
 
-const Contact = ({id}) => {
+const Contact: React.FC<ContactProps>= ({id}) => {
 
 
 

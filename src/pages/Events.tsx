@@ -1,6 +1,9 @@
 
+interface EventProps{
+  id: string; // or whatever type 'id' should be
+}
 
-export const Events = ({id}) => {
+export const Events : React.FC<EventProps>= ({id}) => {
   return (
     <div id={id} className='about flex flex-col gap-10'>
             <div >

@@ -1,5 +1,8 @@
+interface PortfolioProps{
+  id: string; // or whatever type 'id' should be
+}
 
-const Portfolio = ({id}) => {
+const Portfolio : React.FC<PortfolioProps>= ({id}) => {
   return (
      <div id={id} className='about flex flex-col gap-10 '>
             <div >

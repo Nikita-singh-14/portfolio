@@ -1,5 +1,8 @@
+interface ExpProps{
+  id: string; // or whatever type 'id' should be
+}
 
-const Exp = ({id}) => {
+const Exp : React.FC<ExpProps>= ({id}) => {
   return (
     <div id={id} className='about flex flex-col gap-10 '>
             <div >

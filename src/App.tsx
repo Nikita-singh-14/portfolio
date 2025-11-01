@@ -9,13 +9,32 @@ import Resume from './pages/Resume';
 import Skills from './pages/Skills';
 import Cert from './pages/Cert';
 import Contact from './pages/Contact';
+import { useCallback, useState } from 'react';
 
 function App() {
+  const sectionIds = [
+        "home", "about", "skills", "experience", 
+        "portfolio", "certifications", "resume", "contact"
+    ];
+    const [activeSection, setActiveSection] = useState<string>("home");
+  const handleLinkClick = useCallback((id: string) => {
+        setActiveSection(id);
+        // Optional: Implement smooth scroll here if needed
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+    }, []);
+  const placeholderSections = sectionIds.map(id => ({ 
+        id: id, 
+        title: id.charAt(0).toUpperCase() + id.slice(1), 
+        icon: (() => null) as any 
+    }));
 
   return (
       <div className='lg:flex '> 
-        <div className=" lg:block lg:w-[20rem] flex-shrink-0  md:block"> 
-          <Sidebar />
+        <div className="lg:w-[20rem] flex-shrink-0  lg:block"> 
+          <Sidebar 
+          sections={placeholderSections} // Passes the placeholder array
+          activeSection={activeSection} // Passes the current active state
+          onLinkClick={handleLinkClick}/>
         </div>
         <div className='flex-grow w-full'>
          <Home id="home"/>

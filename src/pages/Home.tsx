@@ -1,6 +1,9 @@
 import { useState, useEffect } from 'react';
+interface HomeProps{
+  id: string; // or whatever type 'id' should be
+}
 
-const Home = ({id}) => {
+const Home : React.FC<HomeProps>= ({id}) => {
     const roles = ["FullStack Developer", "Graphics Designer"];
     const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
     

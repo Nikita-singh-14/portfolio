@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// Import all icons here...
+
 
 import { CiHome, CiPhone } from "react-icons/ci";
 import { FaTasks } from "react-icons/fa"; 
@@ -9,15 +9,27 @@ import { GrUserExpert, GrCertificate } from "react-icons/gr";
 import { RiImportFill } from "react-icons/ri";
 import { MdOutlineEventNote } from "react-icons/md";
 import { IoReorderThree, IoClose } from "react-icons/io5";
+import type { IconType } from 'react-icons';
 
-const Sidebar = ({ sections, activeSection, onLinkClick }) => {
+interface NavItem {
+    id: string;
+    title: string;
+    icon: IconType; 
+}
+interface SidebarProps {
+    sections: NavItem[]; 
+    activeSection: string; // The ID of the currently active section
+    onLinkClick: (id: string) => void; // A function that takes a string (id) and returns nothing
+}
+
+const Sidebar : React.FC<SidebarProps>= ({ sections, activeSection, onLinkClick }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen); //check ye rahna chahiye ya nhi
     };
 
-    const navItems = [
+    const navItems : NavItem[] = [
         { id: "home", title: "Home", icon: CiHome },
         { id: 'about', title: 'About', icon: RxAvatar },
         { id: 'skills',  title: 'Skills', icon: FaTasks },
@@ -27,10 +39,12 @@ const Sidebar = ({ sections, activeSection, onLinkClick }) => {
         { id: 'resume', title: 'Resume',  icon: MdOutlineEventNote },
         { id: 'contact', title: 'Contact',  icon: CiPhone },
     ];
-     const handleLinkClick = (id) => {
-      onLinkClick(id); 
-      setIsMenuOpen(false); 
-  };
+     
+
+  const handleLinkClick = (id: string) => { 
+        onLinkClick(id); 
+        setIsMenuOpen(false); 
+    };
 
     return (
        

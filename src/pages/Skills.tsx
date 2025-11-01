@@ -1,5 +1,8 @@
+interface SkillProps{
+  id: string; // or whatever type 'id' should be
+}
 
-const Skills = ({ id }) => {
+const Skills : React.FC<SkillProps>= ({ id }) => {
     return (
         <div id={id} className='about flex flex-col gap-10 '>
             {/* Section Title */}

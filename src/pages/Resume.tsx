@@ -1,5 +1,8 @@
+interface ResumeProps{
+  id: string; // or whatever type 'id' should be
+}
 
-const Resume = ({id}) => {
+const Resume : React.FC<ResumeProps>= ({id}) => {
   return (
     <div id={id} className='about flex flex-col gap-10 w-full'>
             <div >

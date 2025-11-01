@@ -1,5 +1,7 @@
-
-const Cert = ({id}) => {
+interface CertProps{
+  id: string; // or whatever type 'id' should be
+}
+const Cert : React.FC<CertProps>= ({id}) => {
   return (
     <div id={id} className='about flex flex-col gap-10 '>
             <div >
