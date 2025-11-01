@@ -52,17 +52,22 @@ ul{
   padding: 40px;
 }
 .about li{
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+.about li b{
+  font-size: 1rem;
 }
 .about .box {
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
-
+.about .para{
+  font-size: 1.2rem;
+}
 .tech{
   padding-left: 2.5rem;
 }
 .box{
-  background-color: rgb(128, 128, 243);
+  background-color: rgb(183, 183, 251);
   color: #fff;
   padding: 0.2rem;
   border-radius: 0.5rem;
@@ -73,7 +78,7 @@ ul{
 }
 
 .cert img{
-  width: 32rem;
+  width: 25rem;
 }
 .footer{
   padding-left: 2rem;
@@ -91,7 +96,7 @@ ul{
 
 
 .contBox{
-  background-color: aliceblue;
+  background-color: rgb(251, 253, 254);
   height: auto;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(2, 73, 114, 0.3);

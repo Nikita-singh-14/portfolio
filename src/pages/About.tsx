@@ -11,7 +11,7 @@ const About: React.FC<AboutProps> =({id}) => {
         </div>
         <div className='flex flex-col flex-1 md:flex-row gap-8 '>
             <div className='flex flex-col gap-5'>
-                <ul className='flex flex-col gap-5 '>
+                <ul className='flex flex-col gap-5'>
                     <li className='flex items-center gap-2'><FaAngleRight className='text-blue-500'/><b>Degree:  </b> Bachelor of Technology</li>
                     <li className='flex items-center gap-2'><FaAngleRight className='text-blue-500' /><b>Institute: </b>Guru Ghasidas Vishwavidyalaya, bilaspur, C.G., India</li>
                     <li className='flex items-center gap-2'><FaAngleRight className='text-blue-500' /><b>City: </b>Bilaspur, Chhatisgarh</li>
@@ -20,7 +20,7 @@ const About: React.FC<AboutProps> =({id}) => {
                 </ul>
                 <div className='flex flex-col gap-2 tech'>
                     <b>Tech Stack:</b>
-                    <div>
+                    <div >
                         <p className='text-sm'>Web Dvelopment:</p>
                         <div className='flex gap-3 text-xs'>
                             <div className='box'>React</div>
@@ -55,9 +55,9 @@ const About: React.FC<AboutProps> =({id}) => {
                 </div>
             </div>
             <div className='text-xs flex flex-col gap-3 w-1/2'>
-                <p>Pre-Final year B.Tech student at Central University Bilaspur specializing in Information Technology. Proficient in Java and Web development, 
+                <p className="para">Pre-Final year B.Tech student at Central University Bilaspur specializing in Information Technology. Proficient in Java and Web development, 
                 </p>
-                <p>Beyond technical expertise, I'm driven by impact and leadership. Served as Head Core Organizing Committee Member at TEDxBistupur Jamshedpur, 
+                <p className="para">Beyond technical expertise, I'm driven by impact and leadership. Served as Head Core Organizing Committee Member at TEDxBistupur Jamshedpur, 
                     managing multiple speakers and large-scale events. Founded the HASI Movement during COVID to provide free aid for hospital beds, now focused 
                     on delivering free stationery and education to underprivileged children. Whether building intelligent systems or leading meaningful initiatives, 
                     I combine technical problem-solving with strong communication and cross-functional team management to create solutions that make a difference.
