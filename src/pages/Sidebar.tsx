@@ -22,7 +22,7 @@ interface SidebarProps {
     onLinkClick: (id: string) => void; // A function that takes a string (id) and returns nothing
 }
 
-const Sidebar : React.FC<SidebarProps>= ({ sections, activeSection, onLinkClick }) => {
+const Sidebar : React.FC<SidebarProps>= ({activeSection, onLinkClick,sections:_sections }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
