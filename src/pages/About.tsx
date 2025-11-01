@@ -55,12 +55,18 @@ const About: React.FC<AboutProps> =({id}) => {
                 </div>
             </div>
             <div className='text-xs flex flex-col gap-3 w-1/2'>
-                <p className="para">Pre-Final year B.Tech student at Central University Bilaspur specializing in Information Technology. Proficient in Java and Web development, 
+                <p className="para">Pre-Final year B.Tech student at Central University Bilaspur specializing in Information Technology.I'm driven by a passion
+                     for building and creating.
                 </p>
-                <p className="para">Beyond technical expertise, I'm driven by impact and leadership. Served as Head Core Organizing Committee Member at TEDxBistupur Jamshedpur, 
-                    managing multiple speakers and large-scale events. Founded the HASI Movement during COVID to provide free aid for hospital beds, now focused 
-                    on delivering free stationery and education to underprivileged children. Whether building intelligent systems or leading meaningful initiatives, 
-                    I combine technical problem-solving with strong communication and cross-functional team management to create solutions that make a difference.
+                <p className="para">My core focus is Web Development—I love the practical challenge of being a MERN Stack developer
+                      and creating intelligent APIs. I've also built a solid foundation in Java, which has significantly sharpened my 
+                      problem-solving abilities, leading me to successfully conquer over 80 LeetCode problems. What sets me apart is how I 
+                      blend technical skill with creativity; outside of coding, I freelance to design visually striking posters for Yajuka. 
+                      For the past year, I've been an active member of my college's technical club, contributing as part of the Web Developer Team. 
+                      I constantly seek out high-pressure, innovative environments, which is why I regularly participate in major hackathons
+                    like SIH. To stay ahead of the curve, I'm currently expanding my knowledge into the future of tech by taking Machine 
+                    Learning courses via NPTEL. I genuinely enjoy combining my technical expertise with my design sensibilities to bring 
+                    ideas to life.
                 </p>
             </div>
         </div>

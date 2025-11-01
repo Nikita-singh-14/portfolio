@@ -4,7 +4,6 @@ import About from './pages/About';
 import Footer from './pages/Footer';
 import Home from './pages/Home';
 import Exp from './pages/Exp';
-import Portfolio from './pages/Portfolio';
 import Resume from './pages/Resume';
 import Skills from './pages/Skills';
 import Cert from './pages/Cert';
@@ -14,7 +13,7 @@ import { useCallback, useState } from 'react';
 function App() {
   const sectionIds = [
         "home", "about", "skills", "experience", 
-        "portfolio", "certifications", "resume", "contact"
+         "certifications", "resume", "contact"
     ];
     const [activeSection, setActiveSection] = useState<string>("home");
   const handleLinkClick = useCallback((id: string) => {
@@ -40,7 +39,6 @@ function App() {
          <Home id="home"/>
          <About id="about" />
          <Exp id="experience" />
-         <Portfolio id="portfolio" />
          <Resume id="resume" />
          <Skills id="skills" />
          <Cert id="certifications" /> 
