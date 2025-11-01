@@ -1,7 +1,17 @@
-interface ExpProps{
-  id: string; // or whatever type 'id' should be
+import React from 'react';
+
+// --- TYPE INTERFACES ---
+interface SkillCategoryProps {
+  title: string;
+  bullets: string[];
+  color: string;
 }
 
+interface ExpProps {
+  id: string; // Used for section navigation
+}
+
+// --- DATA STRUCTURE (JSON) ---
 const SKILLS_DATA = [
   {
     title: "AI & ML Development:",
@@ -44,7 +54,7 @@ const SKILLS_DATA = [
 // --- COMPONENTS ---
 
 // Component for a single skill category
-const SkillCategory = ({ title, bullets, color }) => (
+const SkillCategory: React.FC<SkillCategoryProps> = ({ title, bullets, color }) => (
   <div className="mb-8 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-gray-100" style={{ borderColor: color }}>
     <h2 className={`text-xl font-extrabold mb-4 tracking-tight ${color}`}>{title}</h2>
     <ul className="list-disc ml-5 space-y-3 text-gray-700">
@@ -60,16 +70,21 @@ const SkillCategory = ({ title, bullets, color }) => (
   </div>
 );
 
-const Exp : React.FC<ExpProps>= ({id}) => {
+// Main Experience Component (renamed from App)
+const Exp: React.FC<ExpProps> = ({ id }) => {
   return (
-    <div id={id} className='about flex flex-col gap-10 '>
-            <div >
-                <b className='text-2xl'>Experiences</b>
-                <div className='h-[0.4rem] bg-blue-500 w-[11.5rem] rounded-2xl'></div>
-            </div>
-            
-                
-            <header className="max-w-4xl mx-auto text-center mb-10 pt-4">
+    <div id={id} className="font-['Inter'] min-h-screen bg-gray-50 p-4 sm:p-10">
+      
+      {/* Custom Experiences Header (from your query) */}
+      <div className='flex flex-col gap-10 w-full mb-10'>
+          <div>
+              <b className='text-3xl text-gray-800'>Experiences</b>
+              <div className='h-1 bg-blue-500 w-[11.5rem] rounded-2xl mt-1'></div>
+          </div>
+      </div>
+
+      {/* Existing Header content, now adjusted */}
+      <header className="max-w-4xl mx-auto text-center mb-10 pt-4">
         <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
           Technical & Strategic Expertise
         </h1>
@@ -93,10 +108,15 @@ const Exp : React.FC<ExpProps>= ({id}) => {
           ))}
         </div>
       </main>
-    
-    </div>
-    
-  )
-}
 
-export default Exp
+      {/* Footer/Context Section */}
+      <footer className="max-w-4xl mx-auto text-center mt-12 pt-6 border-t border-gray-200">
+        <p className="text-sm text-gray-500">
+          This section highlights multi-disciplinary capabilities and impact.
+        </p>
+      </footer>
+    </div>
+  );
+};
+
+export default Exp;
