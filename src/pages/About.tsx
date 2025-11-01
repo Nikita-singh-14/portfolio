@@ -1,5 +1,8 @@
 
 import { FaAngleRight } from "react-icons/fa6";
+interface About{
+  id: string; // or whatever type 'id' should be
+}
 const About = ({id}) => {
   return (
     <div id={id} className='about flex flex-col gap-10 '>
