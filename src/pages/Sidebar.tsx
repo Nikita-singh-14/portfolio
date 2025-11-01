@@ -70,7 +70,7 @@ const Sidebar : React.FC<SidebarProps>= ({activeSection, onLinkClick,sections:_s
                 `}
             >
                 {/* Profile Section */}
-                <div className='flex flex-col items-center gap-2 mt-4 sidebar'>
+                <div className='flex flex-col items-center gap-2 mt-2 sidebar'>
                     <img className='w-[9rem] h-[9rem] rounded-full border-4 border-gray-600' src="profile.jpg" alt="Profile" />
                     <h3 className='text-white text-2xl'>Nikita Singh</h3>
                     <div className='flex gap-4 text-white text-xl'>
@@ -98,7 +98,7 @@ const Sidebar : React.FC<SidebarProps>= ({activeSection, onLinkClick,sections:_s
                         `}
                         onClick={() => handleLinkClick(item.id)} 
                     >   
-                        <Icon className='text-sm'  />
+                        <Icon className='text-xl'  />
                         <span>{item.title}</span>
                     </a>
                 )

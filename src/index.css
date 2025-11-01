@@ -61,7 +61,7 @@ ul{
   font-size: 1rem;
 }
 .about .para{
-  font-size: 1.2rem;
+  font-size: 1.1rem;
 }
 .tech{
   padding-left: 2.5rem;
@@ -76,12 +76,16 @@ ul{
 .box:hover{
   background-color: rgb(63, 63, 238);
 }
-
 .cert img{
-  width: 25rem;
+  width: 26rem;
+}
+.cert img:hover{
+  cursor: pointer;
+  border: black solid 2px;
 }
 .footer{
   padding-left: 2rem;
+  height: auto;
   bottom: 0;
   position: fixed;
 }
@@ -89,6 +93,9 @@ ul{
   align-items: center;
   justify-content: center;
   padding-top: 24px;
+}
+.foot p{
+  font-size: 1rem;
 }
 
 
@@ -100,7 +107,7 @@ ul{
   height: auto;
   padding: 2rem;
   box-shadow: 0 4px 8px rgba(2, 73, 114, 0.3);
-  border-radius: 2%;
+  border-radius: 1%;
 }
 
 
