@@ -81,7 +81,7 @@ const Sidebar : React.FC<SidebarProps>= ({activeSection, onLinkClick,sections:_s
                 </div>
 
                 {/* Navigation Links */}
-                <ul className='flex flex-col gap-5 mt-8 text-sm flex-grow overflow-y-auto'>
+                <ul className='flex flex-col gap-3 mt-8 text-sm flex-grow overflow-y-auto'>
             {navItems.map((item) => {
                 const Icon = item.icon;
                 const isActive = activeSection === item.id;
@@ -98,7 +98,7 @@ const Sidebar : React.FC<SidebarProps>= ({activeSection, onLinkClick,sections:_s
                         `}
                         onClick={() => handleLinkClick(item.id)} 
                     >   
-                        <Icon className='text-xl'  />
+                        <Icon className='text-2xl'  />
                         <span>{item.title}</span>
                     </a>
                 )

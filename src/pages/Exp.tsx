@@ -83,16 +83,6 @@ const Exp: React.FC<ExpProps> = ({ id }) => {
           </div>
       </div>
 
-      {/* Existing Header content, now adjusted */}
-      <header className="max-w-4xl mx-auto text-center mb-10 pt-4">
-        <h1 className="text-4xl font-bold text-gray-900 tracking-tight">
-          Technical & Strategic Expertise
-        </h1>
-        <p className="text-lg text-gray-600 mt-2">
-          Combining deep research with practical execution in AI, Data Science, and Leadership.
-        </p>
-        <div className="h-1 bg-indigo-500 w-24 mx-auto mt-4 rounded-full"></div>
-      </header>
 
       {/* Grid Layout for Skills */}
       <main className="max-w-6xl mx-auto">
@@ -109,12 +99,6 @@ const Exp: React.FC<ExpProps> = ({ id }) => {
         </div>
       </main>
 
-      {/* Footer/Context Section */}
-      <footer className="max-w-4xl mx-auto text-center mt-12 pt-6 border-t border-gray-200">
-        <p className="text-sm text-gray-500">
-          This section highlights multi-disciplinary capabilities and impact.
-        </p>
-      </footer>
     </div>
   );
 };
