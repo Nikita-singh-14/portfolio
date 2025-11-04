@@ -29,7 +29,7 @@ function App() {
 
   return (
       <div className='lg:flex '> 
-        <div className="lg:w-[20rem] flex-shrink-0  lg:block"> 
+        <div className="lg:w-[18rem] flex-shrink-0  lg:block"> 
           <Sidebar 
           sections={placeholderSections} // Passes the placeholder array
           activeSection={activeSection} // Passes the current active state

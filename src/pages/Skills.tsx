@@ -14,8 +14,8 @@ const Skills : React.FC<SkillProps>= ({ id }) => {
             {/* Content: Bio and Skills List */}
             <div className='flex flex-col  w-full md:flex-row gap-8 '>
                 
-                <div className='flex flex-wrap gap-16'>
-                    <div className='w-[50%] flex flex-col gap-2'>
+                <div className='flex flex-wrap gap-16 w-full'>
+                    <div className='w-[48%] flex flex-col gap-2'>
                         
                         {/* Example Skill Item */}
                         <div className='text-lg font-semibold'>Java</div>
@@ -39,13 +39,13 @@ const Skills : React.FC<SkillProps>= ({ id }) => {
                          
 
                     </div>
-                    <div className='flex flex-col gap-2 w-[50%]'>
+                    <div className='flex flex-col gap-2 w-[48%]'>
 
-                    <div className='text-lg font-semibold'>Node.js</div>
+                        <div className='text-lg font-semibold'>Node.js</div>
                         <div className='bg-gray-200 rounded-full h-2.5'>
                             <div className='bg-blue-400 h-2.5 rounded-full w-[90%]'></div> {/* Example progress */}
                         </div>
-                         <div className='text-lg font-semibold'>Express.js</div>
+                        <div className='text-lg font-semibold'>Express.js</div>
                         <div className='bg-gray-200 rounded-full h-2.5'>
                             <div className='bg-blue-400 h-2.5 rounded-full w-[90%]'></div> {/* Example progress */}
                         </div>

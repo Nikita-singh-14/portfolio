@@ -63,7 +63,7 @@ const Sidebar : React.FC<SidebarProps>= ({activeSection, onLinkClick,sections:_s
             </div>
             <div
                 className={`
-                    flex-col gap-8 bg-gray-900 text-gray-400 w-[20rem] h-screen fixed top-0 left-0 z-40 p-6 
+                    flex-col gap-8 bg-gray-900 text-gray-400 w-[18rem] h-screen fixed top-0 left-0 z-40 p-6 
                     transition-transform duration-300 ease-in-out
                     
                     ${isMenuOpen ? 'translate-x-0 flex' : '-translate-x-full lg:translate-x-0 lg:flex'}
@@ -92,14 +92,14 @@ const Sidebar : React.FC<SidebarProps>= ({activeSection, onLinkClick,sections:_s
                         className={`
                             flex items-center gap-4 cursor-pointer p-3 rounded-lg transition-colors duration-200 
                             ${isActive 
-                                ? 'text-white bg-indigo-600 shadow-lg font-semibold' 
-                                : 'hover:text-blue-400'
+                                ? 'text-blue-400  font-semibold' 
+                                : 'hover:text-blue-400 font-semibold'
                             }
                         `}
                         onClick={() => handleLinkClick(item.id)} 
                     >   
                         <Icon className='text-2xl'  />
-                        <span>{item.title}</span>
+                        <span className='text-xl'>{item.title}</span>
                     </a>
                 )
             })}

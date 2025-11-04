@@ -15,16 +15,16 @@ const Contact: React.FC<ContactProps>= ({id}) => {
                 <div className='h-[0.4rem] bg-blue-500 w-[7.5rem] rounded-2xl'></div>
             </div>
             <div className='flex flex-col gap-15 '>
-                <p className='text-xs'>
+                <p className='contactP'>
                     I'm passionate about solving real-world problems with Java and web development. Whether you want to
                     collaborate on a project, discuss design ideas, or offer internship and job opportunities – I'd love
                     to hear from you. 💻
                 </p>
-                <div className=" flex flex-col lg:flex-row gap-26">
+                <div className=" flex flex-col lg:flex-row gap-16">
 
                     <Map />
 
-                    <form className="contBox  flex flex-col gap-7">
+                    <form className="contBox  flex flex-col gap-7 w-[48%]">
 
                         <div className="flex flex-col gap-7">
 
