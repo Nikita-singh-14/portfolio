@@ -78,7 +78,7 @@ ul{
   background-color: rgb(63, 63, 238);
 }
 .cert img{
-  width: 26rem;
+  width: 24rem;
 }
 .cert img:hover{
   cursor: pointer;
@@ -99,6 +99,9 @@ ul{
   font-size: 1rem;
 }
 
+.resumeD{
+  padding: 0.3rem;
+}
 
 
 
@@ -110,7 +113,7 @@ ul{
   border-radius: 1%;
 }
 .contactP{
-  font-size: medium;
+  font-size: 1.2rem;
 }
 
 .burger{

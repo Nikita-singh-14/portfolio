@@ -7,7 +7,7 @@ const Portfolio : React.FC<PortfolioProps>= ({id}) => {
      <div id={id} className='about flex flex-col gap-10 '>
             <div >
                 <b className='text-2xl'>Portfolio</b>
-                <div className='h-[0.3rem] bg-blue-500 w-[8.4rem] rounded-2xl'></div>
+                <div className='h-1 bg-blue-500 w-[8.4rem] rounded-2xl mt-1'></div>
             </div>
             <div className='flex flex-col flex-1 md:flex-row gap-8 justify-between'>
                 <div>

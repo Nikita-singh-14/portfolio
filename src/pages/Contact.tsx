@@ -9,10 +9,10 @@ const Contact: React.FC<ContactProps>= ({id}) => {
 
 
     return (
-        <div id={id} className='about flex flex-col gap-10 '>
+        <div id={id} className='about flex flex-col gap-10 bg-gray-100'>
             <div >
                 <b className='text-2xl'>Contact</b>
-                <div className='h-[0.4rem] bg-blue-500 w-[7.5rem] rounded-2xl'></div>
+                <div className='h-1 bg-blue-500 w-[7.5rem] rounded-2xl mt-1'></div>
             </div>
             <div className='flex flex-col gap-15 '>
                 <p className='contactP'>
@@ -20,30 +20,30 @@ const Contact: React.FC<ContactProps>= ({id}) => {
                     collaborate on a project, discuss design ideas, or offer internship and job opportunities – I'd love
                     to hear from you. 💻
                 </p>
-                <div className=" flex flex-col lg:flex-row gap-16">
+                <div className=" flex flex-col lg:flex-row gap-10">
 
                     <Map />
 
-                    <form className="contBox  flex flex-col gap-7 w-[48%]">
+                    <form className="contBox  flex flex-col gap-7 w-[52%]">
 
                         <div className="flex flex-col gap-7">
 
                             <div className="w-[100%]  ">
-                                <label htmlFor="name" className="block text-2xl font-medium text-gray-700 mb-1">Your Name</label>
+                                <label htmlFor="name" className="block text-xl font-medium text-gray-700 mb-1">Your Name</label>
                                 <div className='flex items-center gap-5'>
                                     <input
                                         type="text"
                                         id="name"
                                         name="name"
                                         required
-                                        className="w-[100%] text-2xl h-12 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                                        className="w-[100%] text-2xl h-10 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150"
                                     />
                                 </div>
                             </div>
 
                             {/* Email Input */}
                             <div className="relative">
-                                <label htmlFor="email" className="block text-2xl font-medium text-gray-700 mb-1">Email Address</label>
+                                <label htmlFor="email" className="block text-xl font-medium text-gray-700 mb-1">Email Address</label>
                                 <div className='flex items-center gap-2'>
                                     <input
                                         type="email"
@@ -51,7 +51,7 @@ const Contact: React.FC<ContactProps>= ({id}) => {
                                         name="email"
                                         required
                                         // ✨ ADDED TAILWIND STYLES TO INPUT
-                                        className="w-[100%] text-2xl h-12 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                                        className="w-[100%] text-2xl h-10 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150"
                                     />
                                 </div>
                             </div>
@@ -59,7 +59,7 @@ const Contact: React.FC<ContactProps>= ({id}) => {
 
                         {/* Subject Input */}
                         <div className="relative">
-                            <label htmlFor="subject" className="block text-2xl font-medium text-gray-700 mb-1">Subject</label>
+                            <label htmlFor="subject" className="block text-xl font-medium text-gray-700 mb-1">Subject</label>
                             <div className='flex items-center gap-2'>
                                 <input
                                     type="text"
@@ -67,14 +67,14 @@ const Contact: React.FC<ContactProps>= ({id}) => {
                                     name="subject"
                                     required
                                     // ✨ ADDED TAILWIND STYLES TO INPUT
-                                    className="w-[100%] text-2xl h-12 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150"
+                                    className="w-[100%] text-2xl h-10 p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150"
                                 />
                             </div>
                         </div>
 
                         {/* Message Textarea */}
                         <div className="relative">
-                            <label htmlFor="message" className="block text-2xl font-medium text-gray-700 mb-1">Message</label>
+                            <label htmlFor="message" className="block text-xl font-medium text-gray-700 mb-1">Message</label>
                             <textarea
                                 id="message"
                                 name="message"

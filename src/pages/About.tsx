@@ -7,7 +7,7 @@ const About: React.FC<AboutProps> =({id}) => {
     <div id={id} className='about flex flex-col gap-10 '>
         <div >
             <b className='text-2xl'>About</b>
-            <div className='h-[0.4rem] bg-blue-500 w-[6.3rem] rounded-2xl '></div>
+            <div className='h-1 bg-blue-500 w-[6.3rem] rounded-2xl mt-1'></div>
         </div>
         <div className='flex flex-col flex-1 md:flex-row gap-8 '>
             <div className='flex flex-col gap-5'>

@@ -33,7 +33,7 @@ interface SummaryData {
 // --- MOCK DATA BASED ON IMAGE CONTENT ---
 const CV_DATA = {
     name: "Nikita Kumari",
-    title: "FullStack Developer / MACHINE LEARNING RESEARCHER",
+    title: "FullStack Developer",
     summary: {
         paragraph: "Experienced Machine Learning Researcher and AI Engineer with proven expertise in deep learning, computer vision, and agentic AI systems. Recognized internationally for technical excellence with publications under review at IEEE JBHI and competitive achievements representing India globally. Proven ability to communicate complex findings to both technical and non-technical stakeholders.",
         bullets: [
@@ -185,7 +185,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
         <div id={id} className='about flex flex-col gap-10 w-full'>
             <div >
                 <b className='text-2xl'>Resume</b>
-                <div className='h-[0.3rem] bg-blue-500 w-[8rem] rounded-2xl '></div>
+                <div className='h-1 bg-blue-500 w-[8rem] rounded-2xl mt-1'></div>
             </div>
 
 
@@ -209,7 +209,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
                         <div className="flex flex-col lg:flex-row gap-15">
 
                             {/* Left Column: Summary & Education (Wider) */}
-                            <div className="lg:w-3/5">
+                            <div className="lg:w-2/4">
                                 <Summary data={CV_DATA.summary} />
                                 <Education data={CV_DATA.education} />
                             </div>
@@ -241,7 +241,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
                 >
                     {/* Lucide icon for better visual appeal */}
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-download-cloud"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" /><path d="M12 15v6" /><path d="m15 18-3 3-3-3" /></svg>
-                    <span>Download Resume</span>
+                    <span className="resumeD">Download Resume</span>
                 </a>
             </div>
 

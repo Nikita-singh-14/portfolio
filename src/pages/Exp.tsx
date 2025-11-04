@@ -73,7 +73,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, bullets, color }) 
 // Main Experience Component (renamed from App)
 const Exp: React.FC<ExpProps> = ({ id }) => {
   return (
-    <div id={id} className="font-['Inter'] min-h-screen bg-gray-50 p-4 sm:p-10 about">
+    <div id={id} className="font-['Inter'] min-h-screen bg-gray-100 p-4 sm:p-10 about">
       
       {/* Custom Experiences Header (from your query) */}
       <div className='flex flex-col gap-10 w-full mb-10'>
