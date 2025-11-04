@@ -88,7 +88,7 @@ const Contact: React.FC<ContactProps>= ({id}) => {
                             <button
                                 type="submit"
                                 disabled={status === 'Sending...'}
-                                className="w-[12rem] h-[4rem] text-2xl flex items-center justify-center px-6 py-3 border border-transparent font-medium rounded-xl shadow-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-[1.01] disabled:bg-blue-400"
+                                className="w-[10rem] h-[2rem] text-xl flex items-center justify-center px-6 py-3 border border-transparent font-medium rounded-xl shadow-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-300 transform hover:scale-[1.01] disabled:bg-blue-400"
                             >
                                 {status === 'Sending...' ? 'Sending...' : 'Send Message'}
                             </button>

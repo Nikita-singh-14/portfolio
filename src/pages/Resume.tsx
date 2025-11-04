@@ -215,7 +215,7 @@ const Resume: React.FC<ResumeProps> = ({ id }) => {
                             </div>
 
                             {/* Right Column: Experience (Narrower) */}
-                            <div className="lg:w-2/5 border-l-2 lg:pl-6 border-gray-100">
+                            <div className="lg:w-2/4 ">
                                 <Experience data={CV_DATA.experience} />
                             </div>
                         </div>

@@ -55,7 +55,7 @@ const SKILLS_DATA = [
 
 // Component for a single skill category
 const SkillCategory: React.FC<SkillCategoryProps> = ({ title, bullets, color }) => (
-  <div className="mb-8 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border-t-4 border-gray-100" style={{ borderColor: color }}>
+  <div className="mb-8 p-6 bg-white rounded-xl expBox" style={{ borderColor: color }}>
     <h2 className={`text-xl font-extrabold mb-4 tracking-tight ${color}`}>{title}</h2>
     <ul className="list-disc ml-5 space-y-3 text-gray-700">
       {bullets.map((bullet, index) => (
@@ -73,7 +73,7 @@ const SkillCategory: React.FC<SkillCategoryProps> = ({ title, bullets, color }) 
 // Main Experience Component (renamed from App)
 const Exp: React.FC<ExpProps> = ({ id }) => {
   return (
-    <div id={id} className="font-['Inter'] min-h-screen bg-gray-100 p-4 sm:p-10 about">
+    <div id={id} className="font-['Inter'] min-h-screen bg-gray-100 p-4 sm:p-10 about flex flex-col gap-10">
       
       {/* Custom Experiences Header (from your query) */}
       <div className='flex flex-col gap-10 w-full mb-10'>

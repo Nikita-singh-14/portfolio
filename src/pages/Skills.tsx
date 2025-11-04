@@ -15,7 +15,7 @@ const Skills : React.FC<SkillProps>= ({ id }) => {
             <div className='flex flex-col  w-full md:flex-row gap-8 '>
                 
                 <div className='flex flex-wrap gap-16 w-full'>
-                    <div className='w-[48%] flex flex-col gap-2'>
+                    <div className='w-[46%] flex flex-col gap-2'>
                         
                         {/* Example Skill Item */}
                         <div className='text-lg font-semibold'>Java</div>
@@ -39,7 +39,7 @@ const Skills : React.FC<SkillProps>= ({ id }) => {
                          
 
                     </div>
-                    <div className='flex flex-col gap-2 w-[48%]'>
+                    <div className='flex flex-col gap-2 w-[46%]'>
 
                         <div className='text-lg font-semibold'>Node.js</div>
                         <div className='bg-gray-200 rounded-full h-2.5'>

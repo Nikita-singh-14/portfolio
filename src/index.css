@@ -63,6 +63,7 @@ ul{
 }
 .about .para{
   font-size: 1.1rem;
+  text-align: justify;
 }
 .tech{
   padding-left: 2.5rem;
@@ -107,7 +108,7 @@ ul{
 
 
 .contBox{
-  background-color: rgb(233, 247, 254);
+  background-color: rgb(255, 255, 255);
   height: auto;
   padding: 1rem;
   border-radius: 1%;
@@ -117,5 +118,8 @@ ul{
 }
 
 .burger{
+  padding: 1rem;
+}
+.expBox{
   padding: 1rem;
 }
