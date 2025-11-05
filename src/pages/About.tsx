@@ -4,7 +4,7 @@ interface AboutProps{
 }
 const About: React.FC<AboutProps> =({id}) => {
   return (
-    <div id={id} className='about flex flex-col gap-10 '>
+    <div id={id} className='about flex flex-col gap-10 g-gray-100'>
         <div >
             <b className='text-2xl'>About</b>
             <div className='h-1 bg-blue-500 w-[6.3rem] rounded-2xl mt-1'></div>

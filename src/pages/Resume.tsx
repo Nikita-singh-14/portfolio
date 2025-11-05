@@ -182,7 +182,7 @@ const Experience: React.FC<{ data: ExperienceItem[] }> = ({ data }) => (
 
 const Resume: React.FC<ResumeProps> = ({ id }) => {
     return (
-        <div id={id} className='about flex flex-col gap-10 w-full'>
+        <div id={id} className='about flex flex-col gap-10 w-full g-gray-100'>
             <div >
                 <b className='text-2xl'>Resume</b>
                 <div className='h-1 bg-blue-500 w-[8rem] rounded-2xl mt-1'></div>

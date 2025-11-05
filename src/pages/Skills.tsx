@@ -4,7 +4,7 @@ interface SkillProps{
 
 const Skills : React.FC<SkillProps>= ({ id }) => {
     return (
-        <div id={id} className='about flex flex-col gap-10 bg-gray-100'>
+        <div id={id} className='about flex flex-col gap-10 '>
             {/* Section Title */}
             <div>
                 <b className='text-2xl'>Skills</b>

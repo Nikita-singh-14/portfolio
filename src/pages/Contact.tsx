@@ -9,7 +9,7 @@ const Contact: React.FC<ContactProps>= ({id}) => {
 
 
     return (
-        <div id={id} className='about flex flex-col gap-10 bg-gray-100'>
+        <div id={id} className='about flex flex-col gap-10'>
             <div >
                 <b className='text-2xl'>Contact</b>
                 <div className='h-1 bg-blue-500 w-[7.5rem] rounded-2xl mt-1'></div>
